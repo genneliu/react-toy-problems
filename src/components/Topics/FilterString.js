@@ -18,11 +18,18 @@ export default class FilterString extends Component {
     }
 
     //onclick prop calls method
-    filterString() {
+    filterString(userInput) {
         var UnArray = this.state.unfilteredArray
-        var filter = this.state.userInput
+        var filteredString = [];
+    
+        for (let i = 0; i < UnArray.length; i++) {
+            if (UnArray[i].includes(userInput)) {
+                filteredString.push(UnArray[i]);
+            }
+        }
 
-        var filteredString = (UnArray.indexOf(filter) > -1);
+            
+
 
         this.setState({ filteredArray: filteredString })
     }
@@ -31,10 +38,10 @@ export default class FilterString extends Component {
         return (
             <div className="puzzleBox filterStringPB"> 
                 <h4>Filter String</h4>
-                <span className="puzzleText"> String: {JSON.stringify(this.state.unfilteredString)}</span>
+                <span className="puzzleText"> String: {JSON.stringify(this.state.unfilteredArray, null, 10)}</span>
                 <input className="inputLine" onChange={ (e) => this.handleChange(e.target.value)}></input>
-                <button className="confirmationbutton" onClick={ () => {this.filterString(this.state.filteredString)}}></button>
-                <span className="resultsBox filterStringRB"></span>
+                <button className="confirmationButton" onClick={ () => {this.filterString(this.state.filteredArray)}}>Filter String!</button>
+                <span className="resultsBox filterStringRB">Filtered String: {JSON.stringify(this.state.filteredArray, null, 10)}</span>
             </div>
         )
     }
