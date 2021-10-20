@@ -6,7 +6,6 @@ export default class FilterObject extends Component {
         super();
 
         this.state = {
-            unfilteredArray: {
                 fruit: [
                 { 
                     name: "Watermelon",
@@ -23,11 +22,9 @@ export default class FilterObject extends Component {
                 { 
                     name: "Spinach",
                     type: "vegetable"
-                },
-            ]
-        },
-
-
+                }
+                ],
+        
             userInput: '',
             filteredArray: []
         }
@@ -35,10 +32,10 @@ export default class FilterObject extends Component {
 
     handleChange(val) {
         this.setState({ userInput: val });
-      }
+    }
 
     assignFilterObject(prop) {
-        var fruits = this.state.unfilteredArray.fruit;
+        var fruits = this.state.fruit;
         var filteredFruit = [];
 
 
@@ -56,7 +53,7 @@ export default class FilterObject extends Component {
         return (
             <div className="puzzleBox filterObjectPB">
                 <h4>Filter Object</h4>
-                <span className="puzzleText"> Original: { JSON.stringify(this.state.unfilteredArray.fruit, null, 10) }</span>
+                <span className="puzzleText"> Original: { JSON.stringify(this.state.fruit, null, 10) }</span>
                 <input className="inputLine" onChange={ (e) => this.handleChange(e.target.value) }></input>
                 <button className="confirmationButton" onClick={ () => { this.assignFilterObject(this.state.userInput) }}>Filter</button>
                 <span className="resultsBox filterObjectRB"> Filtered: { JSON.stringify(this.state.filteredArray, null, 10) }</span>
