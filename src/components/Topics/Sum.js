@@ -34,7 +34,8 @@ export default class Sum extends Component {
             <div className="puzzleBox sumPB">
                 <h4>Sum</h4>
                 <span className="resultsBox"> The Sum is: { JSON.stringify(this.state.sum, null, 10)}</span>
-                <input className="inputLine" onChange={ (e, f) => this.handleChange(e.target.value)}></input>
+                <input className="inputLine" onChange={ (e) => this.handleChange(e.target.value)}></input>
+                <input className="inputLine" onChange={ (f) => this.handleChange2(f.target.value)}></input>
                 <button className="confirmationButton" onClick={ () => {this.calculateSum(this.state.number1, this.state.number2, 10)}}></button>
             </div>
         )
